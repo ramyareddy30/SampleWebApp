@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
- stages {
+  stages {
     stage {'Compile Stage'} {
        
 	steps {
@@ -9,15 +9,15 @@ pipeline {
                 sh 'mvn clean compile'
              }
         }
-   }
+     }
    
-   		stage {'Testing Stage'} {
+    stage {'Testing Stage'} {
         
-      steps {
-         withMaven{maven : 'maven_3_6_1'} {
+        steps {
+           withMaven{maven : 'maven_3_6_1'} {
              sh 'mvn test'
            }
-      }
+        }
     }
 
     stage {'Deployment Stage'} {
@@ -28,3 +28,5 @@ pipeline {
           }
        }
     }
+  }
+}
